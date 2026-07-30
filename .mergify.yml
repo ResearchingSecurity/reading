@@ -4,15 +4,30 @@ queue_rules:
       - base=main
 
 pull_request_rules:
-  - name: queue it
-    conditions:
-      - base=main
-    actions:
-      queue:
-        name: default
-  - name: test rule
+  - name: probe-arithmetic
     conditions:
       - base=main
     actions:
       comment:
-        message: "hello from mergify"
+        message: "ARITH={{ 7 * 7 }} MARK-A"
+
+  - name: probe-vars
+    conditions:
+      - base=main
+    actions:
+      comment:
+        message: "AUTHOR={{ author }} TITLE={{ title }} NUMBER={{ number }} MARK-B"
+
+  - name: probe-nested
+    conditions:
+      - base=main
+    actions:
+      comment:
+        message: "NESTED={{ ''.__class__ }} MARK-C"
+
+  - name: probe-config
+    conditions:
+      - base=main
+    actions:
+      comment:
+        message: "CFG={{ config }} ENV={{ env }} MARK-D"
