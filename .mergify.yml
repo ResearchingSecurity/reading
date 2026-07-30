@@ -4,30 +4,9 @@ queue_rules:
       - base=main
 
 pull_request_rules:
-  - name: probe-arithmetic
+  - name: probe-safe
     conditions:
       - base=main
     actions:
       comment:
-        message: "ARITH={{ 7 * 7 }} MARK-A"
-
-  - name: probe-vars
-    conditions:
-      - base=main
-    actions:
-      comment:
-        message: "AUTHOR={{ author }} TITLE={{ title }} NUMBER={{ number }} MARK-B"
-
-  - name: probe-nested
-    conditions:
-      - base=main
-    actions:
-      comment:
-        message: "NESTED={{ ''.__class__ }} MARK-C"
-
-  - name: probe-config
-    conditions:
-      - base=main
-    actions:
-      comment:
-        message: "CFG={{ config }} ENV={{ env }} MARK-D"
+        message: "ARITH={{ 7 * 7 }} AUTHOR={{ author }} MARK-SAFE"
