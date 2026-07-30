@@ -1,7 +1,18 @@
+queue_rules:
+  - name: default
+    queue_conditions:
+      - base=main
+
 pull_request_rules:
-     - name: test rule
-       conditions:
-         - base=main
-       actions:
-         comment:
-           message: "hello from mergify"
+  - name: queue it
+    conditions:
+      - base=main
+    actions:
+      queue:
+        name: default
+  - name: test rule
+    conditions:
+      - base=main
+    actions:
+      comment:
+        message: "hello from mergify"
