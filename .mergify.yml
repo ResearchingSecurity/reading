@@ -1,0 +1,7 @@
+pull_request_rules:
+     - name: test rule
+       conditions:
+         - base=main
+       actions:
+         comment:
+           message: "hello from mergify"
